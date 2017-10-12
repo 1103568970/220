@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script src="hammer.js"></script>
+    <style>
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        body{
+            margin: 0;
+            overflow: hidden;
+        }
+        ul{
+            display: flex;
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 400%;
+
+        }
+        li{
+            width: 100%;
+            float: left;
+        }
+    </style>
+
+</head>
+<body>
+<ul id="box">
+    <li style="background-color: antiquewhite">asd001</li>
+    <li style="background-color: aqua">asd002</li>
+    <li style="background-color: blue">asd003</li>
+    <li style="background-color: chocolate">asd004</li>
+</ul>
+</body>
+</html>
+<script>
+    var box = document.getElementById("box");
+    var hins = new Hammer(box);
+    var i =0;
+    var flog = true;
+    hins.on('panright', function() {
+        if(flog){
+            if(i<3){
+                i++;
+            }
+            else {
+                i=3
+            }
+            console.log(i);
+            box.style.transform = "translate3d(-"+i*25+"%,0,0)";
+            flog=false;
+        }
+    });
+
+    box.addEventListener("touchend",function (){
+        flog = true;
+    });
+    hins.on('panleft', function() {
+        if(flog){
+            if(i>0){
+                i--;
+            }
+            else {
+                i=0
+            }
+            console.log(i);
+            box.style.transform = "translate3d(-"+i*25+"%,0,0)";
+            flog=false;
+        }
+    });
+
+
+</script>
