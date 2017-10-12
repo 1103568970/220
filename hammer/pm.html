@@ -9,8 +9,8 @@
     <script src="hammer.js"></script>
     <style>
         .box{
-            height: 500px;
-            width:400px;
+            height: 100px;
+            width:160px;
             background-color: blue;
         }
     </style>
@@ -28,18 +28,18 @@
 
     hins.on("pinchin",function(){
 
-
-        if(sc>=3){
-            sc=3
+        sc-=0.03;
+        if(sc<=0.1){
+            sc=0.1
         }
-       box.style.transform="scale("+sc+")";
+       box.style.webkitTransform="scale("+sc+")";
     });
     hins.on("pinchout",function(){
-
-        if(sc<=0.3){
-            sc=0.3
+        sc+=0.03;
+        if(sc<=3){
+            sc=3
         }
-       box.style.transform="scale("+sc+")";
+       box.style.webkitTransform="scale("+sc+")";
     })
 
 </script>
